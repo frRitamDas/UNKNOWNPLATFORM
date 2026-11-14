@@ -1,0 +1,44 @@
+{
+  "name": "reelforge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reelforge — AI video editing platform. Paste raw clips, get finished vertical videos with burned-in captions.",
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0 -p 3000",
+    "build": "next build",
+    "start": "next start -H 0.0.0.0 -p 3000",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "worker": "node worker/index.mjs",
+    "worker:install": "node scripts/install-ffmpeg.mjs",
+    "db:setup": "node scripts/setup.mjs",
+    "test": "tsx --test tests/*.test.ts",
+    "test:captions": "tsx --test tests/captions.test.ts"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.119.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.545.0",
+    "next": "15.5.29",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}
