@@ -2,38 +2,65 @@
 
 /* ── Reelforge design tokens ─────────────────────────────────────────── */
 @theme {
-  --color-ink-950: #06070a;
-  --color-ink-900: #0a0c10;
-  --color-ink-850: #0e1116;
-  --color-ink-800: #12161c;
-  --color-ink-750: #171c24;
-  --color-ink-700: #1e242e;
-  --color-ink-600: #2a313d;
-  --color-ink-500: #3b4453;
-  --color-ink-400: #5b6577;
-  --color-ink-300: #8a93a3;
-  --color-ink-200: #b9c0cb;
-  --color-ink-100: #e4e8ee;
-  --color-ink-50: #f6f8fa;
+  /* app chrome (dark) */
+  --color-app-950: #08080a;
+  --color-app-900: #0d0d0f;
+  --color-app-850: #121214;
+  --color-app-800: #17171a;
+  --color-app-750: #1c1c20;
+  --color-app-700: #232328;
+  --color-app-600: #2e2e35;
+  --color-app-500: #3d3d46;
+  --color-app-400: #5c5c67;
+  --color-app-300: #8b8b96;
+  --color-app-200: #b9b9c2;
+  --color-app-100: #e6e6ea;
+  --color-app-50: #f7f7f9;
 
-  --color-lime-signal: #c9f950;
-  --color-lime-deep: #a8e02a;
-  --color-violet-signal: #7b61ff;
+  /* legacy ink aliases (editor + docs still use these) */
+  --color-ink-950: #08080a;
+  --color-ink-900: #0d0d0f;
+  --color-ink-850: #121214;
+  --color-ink-800: #17171a;
+  --color-ink-750: #1c1c20;
+  --color-ink-700: #232328;
+  --color-ink-600: #2e2e35;
+  --color-ink-500: #3d3d46;
+  --color-ink-400: #5c5c67;
+  --color-ink-300: #8b8b96;
+  --color-ink-200: #b9b9c2;
+  --color-ink-100: #e6e6ea;
+  --color-ink-50: #f7f7f9;
+
+  /* accent: ember (orange) replaces the old lime */
+  --color-ember: #ffa14c;
+  --color-ember-soft: #ffc38c;
+  --color-ember-deep: #f2812b;
+  --color-sky: #3ec6f5;
+  --color-mint: #3ecf8e;
   --color-rose-signal: #ff5f6d;
   --color-amber-signal: #ffc93c;
+
+  /* marketing (light) */
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #f8f4ec;
+  --color-cream-200: #f0e9dc;
+  --color-cream-300: #e2d7c5;
+  --color-cream-400: #b8a892;
+  --color-cream-700: #5c5347;
+  --color-cream-900: #1d1a16;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --radius-xl2: 1.25rem;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
   * {
-    border-color: var(--color-ink-700);
+    border-color: var(--color-app-700);
   }
 
   html {
@@ -42,8 +69,8 @@
   }
 
   body {
-    background: var(--color-ink-950);
-    color: var(--color-ink-100);
+    background: var(--color-app-950);
+    color: var(--color-app-100);
     font-family: var(--font-sans);
     font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
@@ -51,8 +78,8 @@
   }
 
   ::selection {
-    background: var(--color-lime-signal);
-    color: #06070a;
+    background: var(--color-ember);
+    color: #08080a;
   }
 
   ::-webkit-scrollbar {
@@ -60,30 +87,74 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-ink-900);
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-ink-700);
+    background: var(--color-app-600);
     border-radius: 999px;
-    border: 2px solid var(--color-ink-900);
+    border: 2px solid transparent;
+    background-clip: content-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-ink-600);
+    background: var(--color-app-500);
+    background-clip: content-box;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-lime-signal);
+    outline: 2px solid var(--color-ember);
     outline-offset: 2px;
   }
 }
 
 @layer components {
-  .rf-card {
-    background: color-mix(in oklab, var(--color-ink-850) 88%, transparent);
-    border: 1px solid var(--color-ink-700);
+  /* ── app shell ─────────────────────────────────────────── */
+  .app-shell {
+    background: var(--color-app-950);
+  }
+
+  .app-panel {
+    position: relative;
+    border-radius: 1.5rem;
+    background:
+      radial-gradient(120% 55% at 50% -12%, rgba(255, 161, 76, 0.32), transparent 62%),
+      radial-gradient(70% 40% at 82% -8%, rgba(62, 198, 245, 0.22), transparent 62%),
+      radial-gradient(60% 38% at 16% -6%, rgba(255, 108, 108, 0.2), transparent 62%),
+      var(--color-app-900);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 40px 80px -60px rgba(0, 0, 0, 0.9);
+  }
+
+  .app-card {
+    background: var(--color-app-800);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 1rem;
   }
 
+  .app-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    border-radius: 0.7rem;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-app-200);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    text-align: left;
+  }
+  .app-nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-app-50);
+  }
+  .app-nav-item[data-active="true"] {
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+  }
+
+  /* ── buttons ───────────────────────────────────────────── */
   .rf-btn {
     display: inline-flex;
     align-items: center;
@@ -112,72 +183,82 @@
   }
 
   .rf-btn-primary {
-    background: var(--color-lime-signal);
-    color: #06070a;
+    background: linear-gradient(180deg, var(--color-ember) 0%, var(--color-ember-deep) 100%);
+    color: #1a0f05;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 18px -10px rgba(242, 129, 43, 0.9);
   }
   .rf-btn-primary:hover:not(:disabled) {
-    background: #d7ff75;
+    background: linear-gradient(180deg, #ffb36b 0%, #f78c38 100%);
   }
 
   .rf-btn-ghost {
-    background: var(--color-ink-800);
-    color: var(--color-ink-100);
-    border: 1px solid var(--color-ink-700);
+    background: var(--color-app-800);
+    color: var(--color-app-100);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
   .rf-btn-ghost:hover:not(:disabled) {
-    background: var(--color-ink-750);
-    border-color: var(--color-ink-600);
+    background: var(--color-app-750);
+    border-color: rgba(255, 255, 255, 0.14);
   }
 
   .rf-btn-quiet {
     background: transparent;
-    color: var(--color-ink-200);
+    color: var(--color-app-200);
   }
   .rf-btn-quiet:hover:not(:disabled) {
-    background: var(--color-ink-800);
-    color: var(--color-ink-50);
-  }
-
-  .rf-input {
-    width: 100%;
-    background: var(--color-ink-900);
-    border: 1px solid var(--color-ink-700);
-    border-radius: 0.6rem;
-    padding: 0.65rem 0.85rem;
-    font-size: 0.875rem;
-    color: var(--color-ink-50);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-  .rf-input::placeholder {
-    color: var(--color-ink-400);
-  }
-  .rf-input:focus {
-    outline: none;
-    border-color: var(--color-lime-signal);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-lime-signal) 18%, transparent);
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
   }
 
   .rf-chip {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.6rem;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.5rem 0.9rem;
     border-radius: 999px;
-    border: 1px solid var(--color-ink-700);
-    background: var(--color-ink-850);
-    color: var(--color-ink-300);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--color-app-100);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .rf-chip:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+  .rf-chip[data-active="true"] {
+    background: rgba(255, 161, 76, 0.16);
+    border-color: rgba(255, 161, 76, 0.5);
+    color: #ffd2a8;
+  }
+
+  /* ── inputs ────────────────────────────────────────────── */
+  .rf-input {
+    width: 100%;
+    background: var(--color-app-800);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.875rem;
+    color: var(--color-app-50);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .rf-input::placeholder {
+    color: var(--color-app-400);
+  }
+  .rf-input:focus {
+    outline: none;
+    border-color: rgba(255, 161, 76, 0.6);
+    box-shadow: 0 0 0 3px rgba(255, 161, 76, 0.14);
   }
 
   .rf-label {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-ink-400);
+    color: var(--color-app-200);
   }
 
   .rf-panel-label {
@@ -189,24 +270,61 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-ink-400);
-    border-bottom: 1px solid var(--color-ink-700);
+    color: var(--color-app-400);
+    border-bottom: 1px solid var(--color-app-700);
+  }
+
+  /* ── marketing ─────────────────────────────────────────── */
+  .mkt-shell {
+    background: var(--color-cream-100);
+    color: var(--color-cream-900);
+  }
+
+  .mkt-pill-nav {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px) saturate(1.4);
+    border: 1px solid rgba(29, 26, 22, 0.07);
+    box-shadow: 0 12px 32px -20px rgba(29, 26, 22, 0.35);
+  }
+
+  .mkt-card {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(29, 26, 22, 0.08);
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 60px -40px rgba(29, 26, 22, 0.4);
+  }
+
+  .mkt-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(29, 26, 22, 0.09);
+    color: var(--color-cream-900);
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+  .mkt-chip:hover {
+    background: #fff;
   }
 }
 
 @layer utilities {
+  .rf-serif {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
   .rf-gradient-text {
-    background: linear-gradient(92deg, #f6f8fa 20%, #c9f950 55%, #7b61ff 95%);
+    background: linear-gradient(96deg, #ffd9b5 0%, #ffa14c 45%, #3ec6f5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-  }
-
-  .rf-grid-bg {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 48px 48px;
   }
 
   .rf-noise::after {
@@ -214,13 +332,13 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   .rf-scroll-thin {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-ink-600) transparent;
+    scrollbar-color: var(--color-app-600) transparent;
   }
 
   .rf-no-scrollbar::-webkit-scrollbar {
@@ -229,6 +347,13 @@
   .rf-no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .mkt-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    pointer-events: none;
   }
 }
 
@@ -259,15 +384,6 @@
   }
 }
 
-@keyframes rf-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes rf-pulse-dot {
   0%,
   100% {
@@ -280,15 +396,21 @@
   }
 }
 
+@keyframes rf-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .rf-anim-pop {
   display: inline-block;
   animation: rf-word-pop 0.18s var(--ease-out-expo) both;
 }
 .rf-anim-slide {
   animation: rf-slide-up 0.25s var(--ease-out-expo) both;
-}
-.rf-marquee {
-  animation: rf-marquee 38s linear infinite;
 }
 .rf-pulse {
   animation: rf-pulse-dot 1.8s ease-in-out infinite;
@@ -297,8 +419,8 @@
 @media (prefers-reduced-motion: reduce) {
   .rf-anim-pop,
   .rf-anim-slide,
-  .rf-marquee,
-  .rf-pulse {
+  .rf-pulse,
+  .rf-shimmer {
     animation: none !important;
   }
 }

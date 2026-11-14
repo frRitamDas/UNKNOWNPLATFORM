@@ -301,7 +301,7 @@ export function EditorShell({ projectId, initialTranscribe }: { projectId: strin
     return (
       <div className="grid h-dvh place-items-center bg-ink-950">
         <div className="flex flex-col items-center gap-3 text-ink-400">
-          <Loader2 className="h-6 w-6 animate-spin text-lime-signal" />
+          <Loader2 className="h-6 w-6 animate-spin text-ember" />
           <p className="text-[12px]">Opening project…</p>
         </div>
       </div>
@@ -351,7 +351,7 @@ export function EditorShell({ projectId, initialTranscribe }: { projectId: strin
             className={cn(
               "hidden items-center gap-1 rounded-full border px-2 py-1 text-[9.5px] font-semibold uppercase tracking-wider md:inline-flex",
               store.mode === "cloud"
-                ? "border-lime-signal/30 bg-lime-signal/10 text-lime-signal"
+                ? "border-ember/30 bg-ember/10 text-ember"
                 : "border-amber-signal/30 bg-amber-signal/10 text-amber-signal",
             )}
           >
@@ -398,7 +398,7 @@ export function EditorShell({ projectId, initialTranscribe }: { projectId: strin
                 className={cn(
                   "flex flex-1 items-center justify-center gap-1.5 py-2.5 text-[11px] font-medium transition-colors",
                   leftTab === id
-                    ? "border-b-2 border-lime-signal text-ink-50"
+                    ? "border-b-2 border-ember text-ink-50"
                     : "border-b-2 border-transparent text-ink-500 hover:text-ink-200",
                 )}
               >
@@ -460,7 +460,7 @@ export function EditorShell({ projectId, initialTranscribe }: { projectId: strin
                 </div>
 
                 <div className="mt-3">
-                  <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-ink-600 bg-ink-900 px-3 py-3 text-[11.5px] text-ink-300 hover:border-lime-signal/50">
+                  <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-ink-600 bg-ink-900 px-3 py-3 text-[11.5px] text-ink-300 hover:border-ember/50">
                     <Plus className="h-3.5 w-3.5" />
                     Add another clip
                     <input
@@ -524,7 +524,7 @@ export function EditorShell({ projectId, initialTranscribe }: { projectId: strin
                 className={cn(
                   "flex flex-1 items-center justify-center gap-1.5 py-2.5 text-[11px] font-medium transition-colors",
                   rightTab === id
-                    ? "border-b-2 border-lime-signal text-ink-50"
+                    ? "border-b-2 border-ember text-ink-50"
                     : "border-b-2 border-transparent text-ink-500 hover:text-ink-200",
                 )}
               >
@@ -554,7 +554,7 @@ function SaveBadge({ state }: { state: SaveState }) {
   if (state === "idle") return null;
   const map = {
     saving: { icon: Loader2, text: "Saving", className: "text-ink-500", spin: true },
-    saved: { icon: Check, text: "Saved", className: "text-lime-signal/70", spin: false },
+    saved: { icon: Check, text: "Saved", className: "text-ember/70", spin: false },
     error: { icon: CloudOff, text: "Not saved", className: "text-rose-signal", spin: false },
     idle: { icon: Check, text: "", className: "", spin: false },
   } as const;

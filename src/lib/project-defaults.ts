@@ -18,7 +18,7 @@ export function createEmptyDoc(title: string, aspect: Aspect = "9:16"): ProjectD
     },
     music: null,
     audio: { clipVolume: 1, denoise: false, normalize: true, voiceBoost: false },
-    framing: { background: "black", zoomPunch: false, padColor: "#000000", fit: "cover" },
+    framing: { background: "black", zoomPunch: false, padColor: "#000000", fit: "cover", transition: "cut" },
     branding: { watermarkText: "", watermarkEnabled: false, progressBar: false },
     updatedAt: new Date().toISOString(),
   };

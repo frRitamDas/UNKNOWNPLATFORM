@@ -43,7 +43,7 @@ export function StylePanel({
               className={cn(
                 "flex items-center gap-2 rounded-lg border px-2 py-2 text-left transition-colors",
                 style.presetId === p.id
-                  ? "border-lime-signal/60 bg-lime-signal/10"
+                  ? "border-ember/60 bg-ember/10"
                   : "border-ink-700 bg-ink-900 hover:border-ink-600",
               )}
               title={p.blurb}
@@ -178,7 +178,7 @@ export function StylePanel({
               className={cn(
                 "rounded-md border px-1 py-1 text-[10px] transition-colors",
                 Math.abs(style.positionYPct - (value as number)) < 4
-                  ? "border-lime-signal/50 bg-lime-signal/10 text-ink-100"
+                  ? "border-ember/50 bg-ember/10 text-ink-100"
                   : "border-ink-700 text-ink-400 hover:border-ink-600",
               )}
             >
@@ -239,7 +239,7 @@ export function StylePanel({
           className={cn(
             "flex w-full items-center justify-between rounded-lg border px-3 py-2 text-[11.5px] transition-colors",
             doc.captions.enabled
-              ? "border-lime-signal/40 bg-lime-signal/[0.07] text-ink-100"
+              ? "border-ember/40 bg-ember/[0.07] text-ink-100"
               : "border-ink-700 bg-ink-900 text-ink-400",
           )}
         >
@@ -247,7 +247,7 @@ export function StylePanel({
             <Sparkles className="h-3.5 w-3.5" />
             Burn captions into export
           </span>
-          <span className={cn("h-1.5 w-1.5 rounded-full", doc.captions.enabled ? "bg-lime-signal" : "bg-ink-600")} />
+          <span className={cn("h-1.5 w-1.5 rounded-full", doc.captions.enabled ? "bg-ember" : "bg-ink-600")} />
         </button>
       </PanelSection>
     </div>

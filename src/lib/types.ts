@@ -92,7 +92,14 @@ export type ProjectDoc = {
   };
   music: MusicTrack | null;
   audio: { clipVolume: number; denoise: boolean; normalize: boolean; voiceBoost: boolean };
-  framing: { background: "black" | "blur" | "gradient"; zoomPunch: boolean; padColor: string; fit: "cover" | "contain" };
+  framing: {
+    background: "black" | "blur" | "gradient";
+    zoomPunch: boolean;
+    padColor: string;
+    fit: "cover" | "contain";
+    /** Between-clip transition. "fade" dips to black for 250ms. */
+    transition: "cut" | "fade";
+  };
   branding: { watermarkText: string; watermarkEnabled: boolean; progressBar: boolean };
   updatedAt: string;
 };

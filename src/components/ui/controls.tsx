@@ -35,9 +35,9 @@ export function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="mt-1.5 h-1 w-full cursor-pointer appearance-none rounded-full bg-ink-700 accent-lime-signal
+        className="mt-1.5 h-1 w-full cursor-pointer appearance-none rounded-full bg-ink-700 accent-ember
           [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none
-          [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-lime-signal
+          [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-ember
           [&::-webkit-slider-thumb]:shadow-[0_0_0_3px_rgba(201,249,80,0.18)]"
       />
       {hint && <span className="mt-1 block text-[10.5px] leading-snug text-ink-500">{hint}</span>}
@@ -74,7 +74,7 @@ export function Toggle({
         onClick={() => onChange(!checked)}
         className={cn(
           "relative mt-0.5 h-[18px] w-[32px] shrink-0 rounded-full transition-colors",
-          checked ? "bg-lime-signal" : "bg-ink-700",
+          checked ? "bg-ember" : "bg-ink-700",
         )}
       >
         <span
@@ -173,7 +173,7 @@ export function Select<T extends string>({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value as T)}
-        className="w-full rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-2 text-[12px] text-ink-100 outline-none focus:border-lime-signal"
+        className="w-full rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-2 text-[12px] text-ink-100 outline-none focus:border-ember"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

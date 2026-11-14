@@ -138,7 +138,7 @@ export function TranscriptPanel({
               return (
                 <li key={line.index}>
                   {isEditing ? (
-                    <div className="rounded-lg border border-lime-signal/50 bg-ink-850 p-2">
+                    <div className="rounded-lg border border-ember/50 bg-ink-850 p-2">
                       <textarea
                         autoFocus
                         rows={2}
@@ -166,12 +166,12 @@ export function TranscriptPanel({
                     <div
                       className={cn(
                         "group flex items-start gap-2 rounded-lg px-2 py-1.5 transition-colors",
-                        isActive ? "bg-lime-signal/10" : "hover:bg-ink-850",
+                        isActive ? "bg-ember/10" : "hover:bg-ink-850",
                       )}
                     >
                       <button
                         onClick={() => onSeek(line.startMs + doc.captions.offsetMs)}
-                        className="mt-0.5 shrink-0 font-mono text-[9.5px] tabular-nums text-ink-500 group-hover:text-lime-signal"
+                        className="mt-0.5 shrink-0 font-mono text-[9.5px] tabular-nums text-ink-500 group-hover:text-ember"
                         title="Jump to this line"
                       >
                         {formatTimecode(line.startMs)}

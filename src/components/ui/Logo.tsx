@@ -1,30 +1,64 @@
 import { cn } from "@/lib/utils";
 
+/**
+ * Reelforge mark: a soft stack of gradient puffs (speech + cloud + waveform).
+ * Deliberately its own shape — not a redraw of a competitor's logo.
+ */
 export function LogoMark({ className, size = 32 }: { className?: string; size?: number }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 40 40"
+      viewBox="0 0 48 48"
       fill="none"
       className={cn("shrink-0", className)}
       aria-hidden="true"
     >
-      <rect width="40" height="40" rx="11" fill="#C9F950" />
-      <path d="M15.5 12.4c0-1 1.1-1.6 1.9-1.1l9.4 6.1c.8.5.8 1.7 0 2.2l-9.4 6.1c-.8.5-1.9-.1-1.9-1.1V12.4Z" fill="#06070A" />
-      <rect x="9" y="27.5" width="12" height="3.4" rx="1.7" fill="#06070A" opacity="0.9" />
-      <rect x="23" y="27.5" width="8" height="3.4" rx="1.7" fill="#06070A" opacity="0.45" />
+      <defs>
+        <linearGradient id="rf-puff" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#3EC6F5" />
+          <stop offset="0.42" stopColor="#9DC6FF" />
+          <stop offset="0.72" stopColor="#FFC38C" />
+          <stop offset="1" stopColor="#FF8A3D" />
+        </linearGradient>
+        <filter id="rf-soft" x="-25%" y="-25%" width="150%" height="150%">
+          <feGaussianBlur stdDeviation="0.9" />
+        </filter>
+      </defs>
+      <g fill="url(#rf-puff)" filter="url(#rf-soft)">
+        <ellipse cx="24" cy="14.5" rx="11.5" ry="8.5" />
+        <ellipse cx="13.5" cy="25" rx="12" ry="8" opacity="0.92" />
+        <ellipse cx="34.5" cy="25" rx="12" ry="8" opacity="0.92" />
+        <ellipse cx="24" cy="34.5" rx="15" ry="8.5" opacity="0.96" />
+      </g>
     </svg>
   );
 }
 
-export function Logo({ className, size = 30 }: { className?: string; size?: number }) {
+export function Logo({
+  className,
+  size = 30,
+  tone = "light",
+  showWord = true,
+}: {
+  className?: string;
+  size?: number;
+  tone?: "light" | "dark";
+  showWord?: boolean;
+}) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <LogoMark size={size} />
-      <span className="text-[1.0625rem] font-extrabold tracking-[-0.03em] text-ink-50">
-        Reel<span className="text-lime-signal">forge</span>
-      </span>
+      {showWord && (
+        <span
+          className={cn(
+            "text-[1.15rem] font-bold tracking-[-0.045em]",
+            tone === "light" ? "text-white" : "text-cream-900",
+          )}
+        >
+          reelforge
+        </span>
+      )}
     </span>
   );
 }

@@ -97,7 +97,7 @@ export function PreviewStage({
               {doc.branding.progressBar && (
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] bg-white/15">
                   <div
-                    className="h-full bg-lime-signal"
+                    className="h-full bg-ember"
                     style={{ width: `${duration ? Math.min(100, (time / duration) * 100) : 0}%` }}
                   />
                 </div>
@@ -109,7 +109,7 @@ export function PreviewStage({
                   className="absolute inset-0 z-30 grid place-items-center bg-black/20 opacity-0 transition-opacity hover:opacity-100"
                   aria-label="Play"
                 >
-                  <span className="grid h-14 w-14 place-items-center rounded-full bg-lime-signal/90 text-ink-950 shadow-xl backdrop-blur">
+                  <span className="grid h-14 w-14 place-items-center rounded-full bg-ember/90 text-ink-950 shadow-xl backdrop-blur">
                     <Play className="ml-0.5 h-6 w-6 fill-current" />
                   </span>
                 </button>
@@ -122,9 +122,9 @@ export function PreviewStage({
               className="group flex h-full w-full flex-col items-center justify-center gap-3 bg-[radial-gradient(80%_80%_at_50%_40%,rgba(201,249,80,0.06),transparent_70%)] px-6 text-center"
             >
               {uploadBusy ? (
-                <Loader2 className="h-7 w-7 animate-spin text-lime-signal" />
+                <Loader2 className="h-7 w-7 animate-spin text-ember" />
               ) : (
-                <span className="grid h-12 w-12 place-items-center rounded-2xl border border-ink-700 bg-ink-850 text-lime-signal transition-transform group-hover:scale-105">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl border border-ink-700 bg-ink-850 text-ember transition-transform group-hover:scale-105">
                   <Upload className="h-5 w-5" />
                 </span>
               )}
@@ -163,7 +163,7 @@ export function PreviewStage({
           <button
             onClick={onToggle}
             disabled={!hasClip}
-            className="grid h-8 w-8 place-items-center rounded-full bg-lime-signal text-ink-950 disabled:opacity-40"
+            className="grid h-8 w-8 place-items-center rounded-full bg-ember text-ink-950 disabled:opacity-40"
             aria-label={playing ? "Pause" : "Play"}
           >
             {playing ? <Pause className="h-4 w-4 fill-current" /> : <Play className="ml-0.5 h-4 w-4 fill-current" />}

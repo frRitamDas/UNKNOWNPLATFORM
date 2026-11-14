@@ -171,10 +171,10 @@ export function ExportDialog({
               onClick={() => setEngine("browser")}
               className={cn(
                 "rounded-xl border p-3 text-left transition-colors",
-                engine === "browser" ? "border-lime-signal/60 bg-lime-signal/[0.08]" : "border-ink-700 bg-ink-900 hover:border-ink-600",
+                engine === "browser" ? "border-ember/60 bg-ember/[0.08]" : "border-ink-700 bg-ink-900 hover:border-ink-600",
               )}
             >
-              <MonitorPlay className="h-4 w-4 text-lime-signal" />
+              <MonitorPlay className="h-4 w-4 text-ember" />
               <span className="mt-2 block text-[12px] font-semibold text-ink-100">In this browser</span>
               <span className="mt-0.5 block text-[10.5px] leading-snug text-ink-500">
                 Works now. Real-time, no server.
@@ -184,10 +184,10 @@ export function ExportDialog({
               onClick={() => setEngine("ffmpeg")}
               className={cn(
                 "rounded-xl border p-3 text-left transition-colors",
-                engine === "ffmpeg" ? "border-lime-signal/60 bg-lime-signal/[0.08]" : "border-ink-700 bg-ink-900 hover:border-ink-600",
+                engine === "ffmpeg" ? "border-ember/60 bg-ember/[0.08]" : "border-ink-700 bg-ink-900 hover:border-ink-600",
               )}
             >
-              <Server className="h-4 w-4 text-violet-signal" />
+              <Server className="h-4 w-4 text-sky" />
               <span className="mt-2 block text-[12px] font-semibold text-ink-100">Render worker</span>
               <span className="mt-0.5 block text-[10.5px] leading-snug text-ink-500">
                 MP4, faster, exact fonts.
@@ -210,7 +210,7 @@ export function ExportDialog({
                   className={cn(
                     "flex-1 rounded-lg border px-3 py-2 text-[11.5px] transition-colors",
                     resolution === value
-                      ? "border-lime-signal/60 bg-lime-signal/10 text-ink-100"
+                      ? "border-ember/60 bg-ember/10 text-ink-100"
                       : "border-ink-700 text-ink-400 hover:border-ink-600",
                   )}
                 >
@@ -247,13 +247,13 @@ export function ExportDialog({
                 <span className="font-mono tabular-nums text-ink-500">{progress}%</span>
               </div>
               <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-ink-800">
-                <div className="h-full rounded-full bg-lime-signal transition-[width] duration-200" style={{ width: `${progress}%` }} />
+                <div className="h-full rounded-full bg-ember transition-[width] duration-200" style={{ width: `${progress}%` }} />
               </div>
             </div>
           )}
 
           {done && (
-            <div className="flex items-center gap-2 rounded-lg border border-lime-signal/30 bg-lime-signal/10 px-3 py-2 text-[11.5px] text-lime-signal">
+            <div className="flex items-center gap-2 rounded-lg border border-ember/30 bg-ember/10 px-3 py-2 text-[11.5px] text-ember">
               <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
               <span className="min-w-0 flex-1 truncate">
                 {done.startsWith("http") ? "Render complete" : `Saved ${done}`}

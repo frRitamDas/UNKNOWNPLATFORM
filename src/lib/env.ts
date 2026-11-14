@@ -24,4 +24,4 @@ export const env = {
 };
 
 export const APP_NAME = "Reelforge";
-export const APP_TAGLINE = "Paste the raw clip. Get the finished video.";
+export const APP_TAGLINE = "Raw footage in. Ready-to-post out.";

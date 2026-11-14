@@ -123,13 +123,13 @@ export function Timeline({ doc, time, onSeek, onTrim }: Props) {
               return (
                 <div
                   key={clip.id}
-                  className="absolute inset-y-1 overflow-hidden rounded border border-lime-signal/30 bg-lime-signal/10"
+                  className="absolute inset-y-1 overflow-hidden rounded border border-ember/30 bg-ember/10"
                   style={{
                     left: `${(offset.startMs / duration) * 100}%`,
                     width: `${Math.max(0.8, (offset.lengthMs / duration) * 100)}%`,
                   }}
                 >
-                  <span className="absolute left-1 top-1/2 -translate-y-1/2 truncate text-[9px] font-medium text-lime-signal/80">
+                  <span className="absolute left-1 top-1/2 -translate-y-1/2 truncate text-[9px] font-medium text-ember/80">
                     {clip.name}
                   </span>
                 </div>
@@ -157,10 +157,10 @@ export function Timeline({ doc, time, onSeek, onTrim }: Props) {
 
           {/* playhead */}
           <div
-            className="pointer-events-none absolute top-0 z-10 h-full w-px bg-lime-signal"
+            className="pointer-events-none absolute top-0 z-10 h-full w-px bg-ember"
             style={{ left: `${playheadPct}%` }}
           >
-            <div className="absolute -left-[5px] top-0 h-2.5 w-2.5 rounded-sm bg-lime-signal" />
+            <div className="absolute -left-[5px] top-0 h-2.5 w-2.5 rounded-sm bg-ember" />
           </div>
         </div>
       </div>
@@ -218,7 +218,7 @@ function TrimBar({
         </span>
         <span className="font-mono text-[10px] tabular-nums text-ink-400">
           in {formatTimecode(clip.inMs, true)} · out {formatTimecode(clip.outMs, true)} ·{" "}
-          <span className="text-lime-signal">{formatTimecode(clip.outMs - clip.inMs)}</span>
+          <span className="text-ember">{formatTimecode(clip.outMs - clip.inMs)}</span>
         </span>
       </div>
 
@@ -231,7 +231,7 @@ function TrimBar({
             return (
               <span
                 key={i}
-                className={cn("flex-1 rounded-sm", inRange ? "bg-lime-signal/70" : "bg-ink-600/50")}
+                className={cn("flex-1 rounded-sm", inRange ? "bg-ember/70" : "bg-ink-600/50")}
                 style={{ height: `${Math.min(88, height)}%` }}
               />
             );
@@ -244,7 +244,7 @@ function TrimBar({
 
         {/* selection border */}
         <div
-          className="pointer-events-none absolute inset-y-0 border-y-2 border-lime-signal/70"
+          className="pointer-events-none absolute inset-y-0 border-y-2 border-ember/70"
           style={{ left: `${inPct}%`, width: `${outPct - inPct}%` }}
         />
 
@@ -264,7 +264,7 @@ function TrimBar({
               e.stopPropagation();
               setDragging(which);
             }}
-            className="absolute inset-y-0 z-10 w-2.5 cursor-ew-resize bg-lime-signal/90 transition-colors hover:bg-lime-signal"
+            className="absolute inset-y-0 z-10 w-2.5 cursor-ew-resize bg-ember/90 transition-colors hover:bg-ember"
             style={{ left: `calc(${which === "in" ? inPct : outPct}% - ${which === "in" ? 0 : 10}px)` }}
           >
             <span className="absolute left-1/2 top-1/2 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-ink-950/60" />

@@ -1,6 +1,6 @@
 # Reelforge
 
-**Paste the raw clip. Get the finished video.**
+**Raw footage in. Ready-to-post out.**
 
 An AI video editing platform: upload a raw take, get word-level captions you can restyle in one click, reframe to 9:16, and export a finished MP4. Built with Next.js 15, Supabase and ffmpeg.
 
@@ -20,10 +20,18 @@ An AI video editing platform: upload a raw take, get word-level captions you can
 | Real transcription | ✅ Whisper word timings **with `OPENAI_API_KEY`**; demo transcript without |
 | In-browser export | ✅ canvas + MediaRecorder → MP4/WEBM download, zero infrastructure |
 | Server MP4 export | ✅ ffmpeg worker burns the `.ass` caption track, mixes audio |
-| Accounts | ✅ Supabase email/password, magic link, Google, GitHub |
+| Accounts | ✅ Supabase magic link, email/password, Google, Microsoft, Apple |
 | Billing | ❌ not built (pricing page is a placeholder) |
 | Auto silence/filler cut | ❌ next milestone |
 | Face-tracking reframe | ❌ next milestone (crop is centre-based) |
+
+### Interface
+
+The app chrome mirrors the product surface it is modelled on: a dark sidebar (founding-offer card,
+Home / Projects / Avatars / Search, workspace card with plan + upgrade), a large top-glow panel
+holding the composer ("Add media" → pick a style → "Create my video"), a category-tabbed gallery of
+caption styles rendered by the real preview engine, a plans modal, and a light marketing page with a
+serif headline. Caption style cards are live previews of the ten presets, not stock footage.
 
 ---
 

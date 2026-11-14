@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getSupabaseServer } from "@/lib/supabase/server";
-import { DashboardClient } from "@/components/dashboard/DashboardClient";
+import { HomeScreen } from "@/components/app/HomeScreen";
 
-export const metadata: Metadata = { title: "Projects" };
+export const metadata: Metadata = { title: "Home" };
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
@@ -12,5 +12,5 @@ export default async function DashboardPage() {
     const { data } = await supabase.auth.getUser();
     email = data.user?.email ?? null;
   }
-  return <DashboardClient userEmail={email} />;
+  return <HomeScreen userEmail={email} />;
 }

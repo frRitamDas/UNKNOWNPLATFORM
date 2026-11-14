@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/inter";
 import "@fontsource/playfair-display/500.css";
+import "@fontsource/playfair-display/700.css";
+import "@fontsource/playfair-display/800.css";
 import "./globals.css";
 import { APP_NAME, APP_TAGLINE, env } from "@/lib/env";
 
@@ -11,12 +13,12 @@ export const metadata: Metadata = {
     template: `%s · ${APP_NAME}`,
   },
   description:
-    "Paste raw clips and get a finished vertical video: word-level captions, auto reframe, silence cuts and one-click MP4 export. Built for creators who ship daily.",
+    "Drop in raw footage and get a ready-to-post vertical video: word-level captions, ten styled presets, and one-click MP4 export. Built for people who post every day.",
   keywords: ["AI video editor", "auto captions", "vertical video", "shorts editor", "reels", "tiktok captions"],
   openGraph: {
     title: `${APP_NAME} — ${APP_TAGLINE}`,
     description:
-      "Paste raw clips and get a finished vertical video with word-level captions, auto reframe and one-click export.",
+      "Raw footage in, ready-to-post out. Word-level captions, ten styled presets and one-click vertical MP4 export.",
     url: env.appUrl,
     siteName: APP_NAME,
     type: "website",
@@ -24,13 +26,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${APP_NAME} — ${APP_TAGLINE}`,
-    description: "AI video editing: raw clip in, finished vertical video out.",
+    description: "Raw footage in, ready-to-post out — AI captions and styled edits.",
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#06070a",
+  themeColor: "#0d0d0f",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,

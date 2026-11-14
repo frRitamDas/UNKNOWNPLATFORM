@@ -28,14 +28,14 @@ export function CanvasPanel({
                 className={cn(
                   "flex items-center gap-2.5 rounded-lg border px-2 py-2 text-left transition-colors",
                   doc.aspect === key
-                    ? "border-lime-signal/60 bg-lime-signal/10"
+                    ? "border-ember/60 bg-ember/10"
                     : "border-ink-700 bg-ink-900 hover:border-ink-600",
                 )}
               >
                 <span
                   className={cn(
                     "shrink-0 rounded-[3px] border",
-                    doc.aspect === key ? "border-lime-signal bg-lime-signal/20" : "border-ink-500",
+                    doc.aspect === key ? "border-ember bg-ember/20" : "border-ink-500",
                   )}
                   style={{ width: ratio >= 1 ? 22 : 22 * ratio, height: ratio >= 1 ? 22 / ratio : 22 }}
                 />
@@ -158,7 +158,7 @@ export function AudioPanel({
         {doc.music ? (
           <div className="rounded-lg border border-ink-700 bg-ink-900 p-2.5">
             <div className="flex items-center gap-2">
-              <Music className="h-3.5 w-3.5 shrink-0 text-lime-signal" />
+              <Music className="h-3.5 w-3.5 shrink-0 text-ember" />
               <span className="min-w-0 flex-1 truncate text-[11.5px] text-ink-200">{doc.music.name}</span>
               <button
                 onClick={() => update((d) => ({ ...d, music: null }))}
@@ -195,7 +195,7 @@ export function AudioPanel({
           <button
             onClick={() => inputRef.current?.click()}
             disabled={uploadingMusic}
-            className="flex w-full items-center gap-2.5 rounded-lg border border-dashed border-ink-600 bg-ink-900 px-3 py-3 text-left hover:border-lime-signal/50 disabled:opacity-60"
+            className="flex w-full items-center gap-2.5 rounded-lg border border-dashed border-ink-600 bg-ink-900 px-3 py-3 text-left hover:border-ember/50 disabled:opacity-60"
           >
             <Upload className="h-4 w-4 shrink-0 text-ink-400" />
             <span>

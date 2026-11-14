@@ -54,7 +54,7 @@ export default function DocsPage() {
         </aside>
 
         <article className="min-w-0 flex-1">
-          <p className="rf-label text-lime-signal">Documentation</p>
+          <p className="rf-label text-ember">Documentation</p>
           <h1 className="mt-2 text-4xl font-extrabold tracking-[-0.04em] text-ink-50">Build notes & launch guide</h1>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-300">
             Reelforge is a complete, deployable AI editing platform skeleton: paste a raw clip, get captions, style
@@ -74,7 +74,7 @@ export default function DocsPage() {
               ].map(([title, body]) => (
                 <div key={title} className="rf-card p-4">
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-lime-signal" />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-ember" />
                     <div>
                       <p className="text-[13px] font-semibold text-ink-100">{title}</p>
                       <p className="mt-1 text-[12px] leading-relaxed text-ink-400">{body}</p>
@@ -145,7 +145,7 @@ npm run db:setup            # checks tables, creates the storage bucket`}</Code>
                 const Component = Icon as typeof Database;
                 return (
                   <div key={title as string} className="rf-card p-4">
-                    <Component className="h-4 w-4 text-lime-signal" />
+                    <Component className="h-4 w-4 text-ember" />
                     <p className="mt-2 text-[12.5px] font-semibold text-ink-100">{title as string}</p>
                     <p className="mt-1 text-[11.5px] leading-relaxed text-ink-400">{body as string}</p>
                   </div>
@@ -174,7 +174,7 @@ npm run db:setup            # checks tables, creates the storage bucket`}</Code>
                     ["NEXT_PUBLIC_APP_URL", "Metadata URLs, OAuth redirects"],
                   ].map(([name, use]) => (
                     <tr key={name}>
-                      <td className="px-3 py-2 font-mono text-[11.5px] text-lime-signal/90">{name}</td>
+                      <td className="px-3 py-2 font-mono text-[11.5px] text-ember/90">{name}</td>
                       <td className="px-3 py-2 text-ink-300">{use}</td>
                     </tr>
                   ))}
@@ -252,7 +252,7 @@ src/lib/captions/ass.ts                     .ass for ffmpeg`}</Code>
                     ["GET  /auth/callback", "OAuth / magic-link code exchange"],
                   ].map(([endpoint, purpose]) => (
                     <tr key={endpoint}>
-                      <td className="px-3 py-2 font-mono text-[11.5px] text-lime-signal/90">{endpoint}</td>
+                      <td className="px-3 py-2 font-mono text-[11.5px] text-ember/90">{endpoint}</td>
                       <td className="px-3 py-2 text-ink-300">{purpose}</td>
                     </tr>
                   ))}
@@ -306,7 +306,7 @@ vercel --prod`}</Code>
                 ["Add auto-reframe", "Face detection per frame → crop keyframes in the render graph."],
               ].map(([title, body], index) => (
                 <li key={title as string} className="flex gap-3">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-ink-700 bg-ink-850 text-[11px] font-bold text-lime-signal">
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-ink-700 bg-ink-850 text-[11px] font-bold text-ember">
                     {index + 1}
                   </span>
                   <div>
@@ -352,7 +352,7 @@ function Section({
     <section id={id} className="mt-14 scroll-mt-24">
       <h2 className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-ink-50">
         <span className="grid h-7 w-7 place-items-center rounded-lg bg-ink-850 ring-1 ring-ink-700">
-          <Icon className="h-3.5 w-3.5 text-lime-signal" />
+          <Icon className="h-3.5 w-3.5 text-ember" />
         </span>
         {title}
       </h2>
