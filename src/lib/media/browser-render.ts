@@ -141,6 +141,30 @@ export async function renderInBrowser(options: BrowserRenderOptions): Promise<Br
       }
       if (doc.branding.watermarkEnabled && watermark) drawWatermark(ctx, watermark, width, height);
       if (doc.branding.progressBar && total > 0) drawProgressBar(ctx, timelineMs / total, width, height);
+
+      // "fade" transition: dip to black for 250ms at every clip boundary.
+      if (doc.framing.transition === "fade" && doc.clips.length > 1) {
+        const fadeMs = 250;
+        let cursor = 0;
+        let alpha = 1;
+        for (const [index, clip] of doc.clips.entries()) {
+          const length = Math.max(0, clip.outMs - clip.inMs);
+          if (timelineMs < cursor + length || index === doc.clips.length - 1) {
+            const local = timelineMs - cursor;
+            if (cursor > 0) alpha = Math.min(alpha, local / fadeMs);
+            if (cursor + length < total) alpha = Math.min(alpha, (length - local) / fadeMs);
+            break;
+          }
+          cursor += length;
+        }
+        const dip = 1 - Math.max(0, Math.min(1, alpha));
+        if (dip > 0.001) {
+          ctx.save();
+          ctx.fillStyle = `rgba(0,0,0,${dip.toFixed(3)})`;
+          ctx.fillRect(0, 0, width, height);
+          ctx.restore();
+        }
+      }
     };
 
     recorder.start(250);
